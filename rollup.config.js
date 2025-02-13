@@ -1,33 +1,14 @@
 import commonjs from '@rollup/plugin-commonjs';
-import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 
 export default [{
-  input: 'src/png_browser.ts',
+  input: 'src/png.ts',
   output: {
-    file: "lib/browser/png.umd.js",
-    format: 'umd',
+    file: "lib/png.js",
+    format: 'esm',
     name: 'pngQrCode',
-    sourcemap: true
+    sourcemap: false
   },
   plugins: [typescript(), nodeResolve(), commonjs()]
-}, {
-    input: 'src/svg.ts',
-    output: {
-      file: "lib/browser/svg.umd.js",
-      format: 'umd',
-      name: 'svgQrCode',
-      sourcemap: true
-    },
-    plugins: [typescript(), nodeResolve(), commonjs()]    
-}, {
-    input: 'src/pdf.ts',
-    output: {
-      file: "lib/browser/pdf.umd.js",
-      format: 'umd',
-      name: 'pdfQrCode',
-      sourcemap: true
-    },
-    plugins: [typescript(), nodeResolve(), commonjs(), json()]
 }];
